@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JTMcDuff/Stoked/issues"
   },
-  "homepage": "https://github.com/JTMcDuff/Stoked#readme"
+  "homepage": "https://github.com/JTMcDuff/Stoked#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
