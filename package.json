@@ -1,0 +1,19 @@
+{
+  "name": "stoked",
+  "version": "1.0.0",
+  "description": "Coding Challenge App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JTMcDuff/Stoked.git"
+  },
+  "author": "Johnny T. McDuff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JTMcDuff/Stoked/issues"
+  },
+  "homepage": "https://github.com/JTMcDuff/Stoked#readme"
+}
