@@ -21,4 +21,4 @@ class Header extends Component {
   }
 }
 
-export default App;
+export default Header;

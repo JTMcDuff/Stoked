@@ -2,10 +2,18 @@
 'use strict'
 
 // Deps and Instances
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
+// Import from config file to hide password, etc.
+const env = require('./env/config.js');
+
+// DB config
+var mongoDB = env.mLabURL;
+mongoose.connect(mongoDB, { useMongoClient: true} )
+var db = mongoose.connection;
+db.on('error', console.error.bind( console, 'MongoDB connection error:' ) );
 
 var app = express();
 var router = express.Router();
@@ -13,11 +21,11 @@ var router = express.Router();
 // set Port
 var port = process.env.API_PORT || 3001;
 
-//now we should configure the API to use bodyParser and look for JSON data in the request body
+// body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//To prevent errors from Cross Origin Resource Sharing, we will set our headers to allow CORS with middleware like so:
+// CORS
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
