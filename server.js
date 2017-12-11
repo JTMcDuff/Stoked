@@ -39,12 +39,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-//now  we can set the route path & initialize the API
+// Route path and API setup.
 router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!'});
 });
 
-//Use our router configuration when we call /api
+// Use our router configuration when we call /api
 app.use('/api', router);
 
 //starts the server and listens for requests
@@ -57,21 +57,23 @@ router.route('/user')
   // Updating get request later
   .get(function(req, res) {
   	// Check our schema
-    userProfile.find(function(err, comments) {
+    userProfile.find( { name: req.headers.name+ '' }, function(err, user) {
       if (err)
         res.send(err);
       //responds with a json object of our database comments.
       res.json(user)
+      console.log('responded to get request');
     });
   })
+
   // Post new user to DB
   .post(function(req, res) {
     var user = new userProfile();
     //body parser lets us use the req.body
-    user.Name = req.body.Name;
+    console.log('req.body.name?', req.body);
+    user.name = req.body.name;
     user.description = req.body.description;
-
-    comment.save(function(err) {
+    user.save(function(err) {
       if (err)
         res.send(err);
       res.json({ message: 'User Saved' });
