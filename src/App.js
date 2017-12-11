@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import style from './style.css';
 import Header from './Header.js';
+import CreateProfile from './CreateProfile.js';
+import ChooseProfile from './ChooseProfile.js'
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +18,8 @@ class App extends Component {
       <div class="App">
       <Header />
       <h1> Stoked </h1>
+      <CreateProfile />
+      <ChooseProfile />
       </div>
     )
   }
