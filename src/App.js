@@ -1,6 +1,7 @@
 // App.js
 import React, { Component } from 'react';
 import style from './style.css';
+import Header from './Header.js';
 
 class App extends Component {
   constructor(props) {

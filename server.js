@@ -5,6 +5,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const userProfile = require('./model/schema.js');
+
 
 // Import from config file to hide password, etc.
 const env = require('./env/config.js');
@@ -49,3 +51,29 @@ app.use('/api', router);
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
 });
+
+// /user route for posting and retrieving users
+router.route('/user')
+  // Updating get request later
+  .get(function(req, res) {
+  	// Check our schema
+    userProfile.find(function(err, comments) {
+      if (err)
+        res.send(err);
+      //responds with a json object of our database comments.
+      res.json(user)
+    });
+  })
+  // Post new user to DB
+  .post(function(req, res) {
+    var user = new userProfile();
+    //body parser lets us use the req.body
+    user.Name = req.body.Name;
+    user.description = req.body.description;
+
+    comment.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'User Saved' });
+    });
+  });
